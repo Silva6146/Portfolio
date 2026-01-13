@@ -1,58 +1,92 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import cloudflareLogo from './assets/Cloudflare_Logo.svg'
 import './App.css'
+import { useState } from 'react';
+import Home from './Home';
+import Software from './Software';
+import Illustration from './Illustration';
+import SocialMedia from './SocialMedia';
+import Vfx from './Vfx';
+
+// Import Images
+import _profile from './assets/react3.png'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [name, setName] = useState('unknown')
 
-  return (
-    <>
-      <div>
-        <a href='https://vite.dev' target='_blank'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-        <a href='https://workers.cloudflare.com/' target='_blank'>
-          <img src={cloudflareLogo} className='logo cloudflare' alt='Cloudflare logo' />
-        </a>
+  //#region Variable
+  // Final Content:
+  const _buffer = [];
+  // Page Content:
+  const [_pageContent, setPageContent] = useState((<Home></Home>));
+  //#endregion
+
+  //#region Handler
+  // Event Handlers:
+  const HomeClick_Event = ()=>{setPageContent((<Home></Home>))};
+  const SoftClick_Event = ()=>{setPageContent((<Software></Software>))};
+  const IllustrationClick_Event = ()=>{setPageContent((<Illustration></Illustration>))};
+  const dArtClick_Event = ()=>{setPageContent((<Vfx></Vfx>))};
+  //#endregion
+
+  //#region Nav Item
+  // Show Home Button variable:
+  const _homeItem = (
+      <li className="nav-item">
+          <a className="nav-link" href="#" onClick={HomeClick_Event}>Home</a>
+      </li>
+  );
+  const _softwareItem = (
+      <li className="nav-item">
+          <a className="nav-link" href="#" onClick={SoftClick_Event}>Software Developer</a>
+      </li>
+  );
+  const _illustrationItem = (
+      <li className="nav-item">
+        <a className="nav-link" href="#" onClick={IllustrationClick_Event}>Illustrator</a>
+      </li> 
+  );
+  const _dArtistItem = (
+      <li className="nav-item">
+        <a className="nav-link" href="#" onClick={dArtClick_Event}>3D Artist</a>
+      </li> 
+  );
+  //#endregion
+
+  //#region Nav Bar
+  // NavBar Content that will allow to change content:
+  const _navBar = (
+    <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="light">
+      <div className="container-fluid">
+          <a className="navbar-brand" href="#"><img className="profile-picture" src={_profile} width="60" height="60" /></a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse flex-grow-1 justify-content-center navbar-nav h-100" id="navbarNav">
+            <ul className="navbar-nav">
+                {_homeItem}
+                {_softwareItem}
+                {_illustrationItem}
+                {_dArtistItem}
+            </ul>  
+          </div>
       </div>
-      <h1>Vite + React + Cloudflare</h1>
-      <div className='card'>
-        <button
-          onClick={() => setCount((count) => count + 1)}
-          aria-label='increment'
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <div className='card'>
-        <button
-          onClick={() => {
-            fetch('/api/')
-              .then((res) => res.json() as Promise<{ name: string }>)
-              .then((data) => setName(data.name))
-          }}
-          aria-label='get name'
-        >
-          Name from API is: {name}
-        </button>
-        <p>
-          Edit <code>worker/index.ts</code> to change the name
-        </p>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </nav>
+  );
+  //#endregion
+
+  //#region Footer
+  // Setup of the Footer:
+  const _footer = (
+       <div className="footer-container py-3 my-4">
+          <SocialMedia></SocialMedia>
+          <p className="text-center text-body-secondary pt-3">© 2026 Company, Inc</p>
+       </div>
+  );
+  //#endregion
+  
+  // Combines the NavBar + Page Content + Footer:
+  _buffer.push(_navBar);
+  _buffer.push(_pageContent);
+  _buffer.push(_footer);
+  return (_buffer);
 }
 
 export default App
