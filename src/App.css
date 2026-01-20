@@ -6,7 +6,37 @@
 /* Makes list Items be Hovered Light Grey while Nav Links White Smoke */
 li:hover {
     background-color:darkgray;
+    cursor: pointer;
 }
 .nav-link:hover {
     color:whitesmoke;
+}
+
+.button-active {
+    background-color:darkgray;
+    color:whitesmoke;
+}
+
+.stack-item {
+    background-color:whitesmoke;
+    border-radius: 10px;
+}
+
+.contact {
+    background-color:darkgray;
+    border-radius: 10px;
+}
+
+.contact-text {
+    color:whitesmoke;
+}
+
+.contact-link {
+    color:lightcyan;
+}
+
+.port-image {
+    max-width: 50%;
+    height: auto;
+    margin-bottom:10px;
 }

@@ -77,7 +77,7 @@ function App() {
   const _footer = (
        <div className="footer-container py-3 my-4">
           <SocialMedia></SocialMedia>
-          <p className="text-center text-body-secondary pt-3">© 2026 Company, Inc</p>
+          <p className="text-center text-body-secondary pt-3">© 2026</p>
        </div>
   );
   //#endregion
